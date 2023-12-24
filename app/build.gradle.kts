@@ -72,6 +72,10 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.data)
     implementation(projects.core.model)
+    implementation(projects.feature.home)
+    implementation(projects.feature.question)
+    implementation(projects.feature.me)
+
 //    implementation(projects.core.analytics)
 
     implementation(libs.androidx.activity.compose)

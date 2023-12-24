@@ -1,5 +1,14 @@
 import java.net.URI
 
+include(":feature:me")
+
+
+include(":question")
+
+
+include(":home")
+
+
 include(":core:designsystem")
 
 
@@ -39,6 +48,7 @@ dependencyResolutionManagement {
         maven {
             url = java.net.URI.create("https://maven.aliyun.com/repository/gradle-plugin/")
         }
+        maven { url = java.net.URI.create("https://jitpack.io") }
         google()
         mavenCentral()
     }
@@ -54,5 +64,8 @@ include(":core:domain")
 include(":core:network")
 include(":core:designsystem")
 include(":core:testing")
+include(":feature:home")
+include(":feature:question")
+include(":feature:me")
 include(":LocalRepo:shimmer")
  
