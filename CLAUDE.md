@@ -69,6 +69,7 @@
 - **`:core:ui`**: 业务相关公共 UI 组件（感知业务模型）。
 - **`:core:designsystem`**: 原子级设计系统（纯样式，模型无关）。
 - **`:core:network` / `:core:database` / `:core:datastore`**: 数据源实现。
+- **`:core:datastore-proto`**: 专门存放 Protobuf `.proto` 文件定义，供 `:core:datastore` 使用。只包含协议定义，不含业务逻辑；Gradle 插件会自动生成对应的 Kotlin 类。
 - **`:core:common`**: 全局工具类（协程调度、通用 Result）。
 
 ### UseCase 使用原则
