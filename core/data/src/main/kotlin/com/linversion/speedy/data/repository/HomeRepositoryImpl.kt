@@ -1,7 +1,7 @@
 package com.linversion.speedy.data.repository
 
 import com.linversion.speedy.model.ArticleResource
-import com.linversion.speedy.network.NiaNetworkDataSource
+import com.linversion.speedy.network.NetworkDataSource
 import com.linversion.speedy.network.model.asExternalModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ import javax.inject.Inject
  * on 2023/12/23
  */
 class HomeRepositoryImpl @Inject constructor(
-    private val network: NiaNetworkDataSource
+    private val network: NetworkDataSource
 ) : HomeRepository {
 
     override fun getHomeArticle(page: Int): Flow<ArticleResource?> = flow {

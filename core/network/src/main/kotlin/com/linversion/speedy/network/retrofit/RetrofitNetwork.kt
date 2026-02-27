@@ -17,7 +17,7 @@
 package com.linversion.speedy.network.retrofit
 
 import com.linversion.speedy.network.BuildConfig
-import com.linversion.speedy.network.NiaNetworkDataSource
+import com.linversion.speedy.network.NetworkDataSource
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.linversion.speedy.network.model.NetworkArticleResource
 import io.github.rotbolt.flakerokhttpcore.FlakerInterceptor
@@ -29,14 +29,13 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
  * Retrofit API declaration for NIA Network API
  */
-private interface RetrofitNiaNetworkApi {
+private interface RetrofitNetworkApi {
     @GET("article/list/{page}/json")
     suspend fun getHomeArticleList(@Path("page") page: Int): NetworkResponse<NetworkArticleResource>
 }
@@ -55,13 +54,13 @@ private data class NetworkResponse<T>(
 
 
 /**
- * [Retrofit] backed [NiaNetworkDataSource]
+ * [Retrofit] backed [NetworkDataSource]
  */
 @Singleton
 class RetrofitNiaNetwork @Inject constructor(
     networkJson: Json,
     okhttpCallFactory: Call.Factory,
-) : NiaNetworkDataSource {
+) : NetworkDataSource {
 
     private val networkApi = Retrofit.Builder()
         .client(
@@ -76,7 +75,7 @@ class RetrofitNiaNetwork @Inject constructor(
         )
 
         .build()
-        .create(RetrofitNiaNetworkApi::class.java)
+        .create(RetrofitNetworkApi::class.java)
 
     override suspend fun getHomeArticleList(page: Int): NetworkArticleResource? = networkApi.getHomeArticleList(page = page).data
 }

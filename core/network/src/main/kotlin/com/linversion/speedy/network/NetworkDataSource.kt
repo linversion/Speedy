@@ -22,6 +22,6 @@ import com.linversion.speedy.network.model.NetworkArticleResource
 /**
  * Interface representing network calls to the NIA backend
  */
-interface NiaNetworkDataSource {
+interface NetworkDataSource {
     suspend fun getHomeArticleList(page: Int): NetworkArticleResource?
 }

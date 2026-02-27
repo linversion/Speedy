@@ -6,7 +6,7 @@
 - **语言**: Kotlin + [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) & [Flow](https://kotlinlang.org/docs/flow.html)
 - **UI 框架**: [Jetpack Compose](https://developer.android.com/jetpack/compose) (Material 3 + Adaptive Layout)
 - **依赖注入**: [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-- **架构**: 响应式分层架构 (UI -> Domain -> Data)
+- **架构**: 响应式分层架构 (feature UI -> Domain -> Data -> :core:network / :core:datastore)
 - **数据库**: [Room](https://developer.android.com/training/data-storage/room)
 - **网络**: [Retrofit](https://square.github.io/retrofit/) + Kotlinx Serialization
 - **图片加载**: [Coil](https://coil-kt.github.io/coil/)
@@ -70,6 +70,20 @@
 - **`:core:designsystem`**: 原子级设计系统（纯样式，模型无关）。
 - **`:core:network` / `:core:database` / `:core:datastore`**: 数据源实现。
 - **`:core:common`**: 全局工具类（协程调度、通用 Result）。
+
+### UseCase 使用原则
+**满足以下任一条件时，才需要创建 UseCase：**
+1. 需要协调**多个 Repository** 完成一个业务操作。
+2. 包含真实的**业务规则**（不只是空值检查，而是领域逻辑判断）。
+3. 需要**副作用编排**，例如登录成功后同时清除缓存、触发埋点上报。
+4. 同一段逻辑被**多个 ViewModel 复用**。
+5. 需要将底层异常（网络/数据库）**转换为业务语义的异常**。
+
+**以下情况可以跳过 UseCase，ViewModel 直接注入 Repository：**
+- 纯粹的数据读取，没有任何业务判断（如 `repository.getUser()`）。
+- UseCase 的实现只是 `return repository.doX(params)` 的透传转发。
+
+> 架构规范是指导，不是教条。避免为了"有 UseCase"而写空洞的转发层。
 
 ### 测试支持模块
 - **`:core:testing`**: 基础测试运行器与 JUnit Rules。

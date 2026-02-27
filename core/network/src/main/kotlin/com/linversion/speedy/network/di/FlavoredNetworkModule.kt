@@ -16,7 +16,7 @@
 
 package com.linversion.speedy.network.di
 
-import com.linversion.speedy.network.NiaNetworkDataSource
+import com.linversion.speedy.network.NetworkDataSource
 import com.linversion.speedy.network.retrofit.RetrofitNiaNetwork
 import dagger.Binds
 import dagger.Module
@@ -28,5 +28,5 @@ import dagger.hilt.components.SingletonComponent
 interface FlavoredNetworkModule {
 
     @Binds
-    fun binds(impl: RetrofitNiaNetwork): NiaNetworkDataSource
+    fun binds(impl: RetrofitNiaNetwork): NetworkDataSource
 }

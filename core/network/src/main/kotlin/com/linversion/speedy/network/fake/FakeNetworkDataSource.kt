@@ -19,20 +19,20 @@ package com.linversion.speedy.network.fake
 import JvmUnitTestFakeAssetManager
 import com.linversion.speedy.common.network.Dispatcher
 import com.linversion.speedy.common.network.NiaDispatchers
-import com.linversion.speedy.network.NiaNetworkDataSource
+import com.linversion.speedy.network.NetworkDataSource
 import com.linversion.speedy.network.model.NetworkArticleResource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 /**
- * [NiaNetworkDataSource] implementation that provides static news resources to aid development
+ * [NetworkDataSource] implementation that provides static news resources to aid development
  */
-class FakeNiaNetworkDataSource @Inject constructor(
+class FakeNetworkDataSource @Inject constructor(
     @Dispatcher(NiaDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
     private val networkJson: Json,
     private val assets: FakeAssetManager = JvmUnitTestFakeAssetManager,
-) : NiaNetworkDataSource {
+) : NetworkDataSource {
     override suspend fun getHomeArticleList(page: Int): NetworkArticleResource? {
         return null
     }

@@ -17,7 +17,7 @@
 package com.google.samples.apps.nowinandroid.core.network.fake
 
 import JvmUnitTestFakeAssetManager
-import com.linversion.speedy.network.fake.FakeNiaNetworkDataSource
+import com.linversion.speedy.network.fake.FakeNetworkDataSource
 //import com.google.samples.apps.nowinandroid.core.network.model.NetworkNewsResource
 //import com.google.samples.apps.nowinandroid.core.network.model.NetworkTopic
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -26,13 +26,13 @@ import org.junit.Before
 
 class FakeNiaNetworkDataSourceTest {
 
-    private lateinit var subject: FakeNiaNetworkDataSource
+    private lateinit var subject: FakeNetworkDataSource
 
     private val testDispatcher = StandardTestDispatcher()
 
     @Before
     fun setUp() {
-        subject = FakeNiaNetworkDataSource(
+        subject = FakeNetworkDataSource(
             ioDispatcher = testDispatcher,
             networkJson = Json { ignoreUnknownKeys = true },
             assets = JvmUnitTestFakeAssetManager,
