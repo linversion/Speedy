@@ -20,6 +20,7 @@ import JvmUnitTestFakeAssetManager
 import com.linversion.speedy.common.network.Dispatcher
 import com.linversion.speedy.common.network.NiaDispatchers
 import com.linversion.speedy.network.NiaNetworkDataSource
+import com.linversion.speedy.network.model.NetworkArticleResource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
@@ -32,6 +33,9 @@ class FakeNiaNetworkDataSource @Inject constructor(
     private val networkJson: Json,
     private val assets: FakeAssetManager = JvmUnitTestFakeAssetManager,
 ) : NiaNetworkDataSource {
+    override suspend fun getHomeArticleList(page: Int): NetworkArticleResource? {
+        return null
+    }
 
 
     companion object {

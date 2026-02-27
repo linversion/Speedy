@@ -17,6 +17,9 @@
 package com.linversion.speedy.network.di
 
 import android.content.Context
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.util.DebugLogger
 import com.linversion.speedy.network.BuildConfig
 import com.linversion.speedy.network.fake.FakeAssetManager
 import dagger.Module
@@ -66,23 +69,23 @@ object NetworkModule {
      *
      * @see <a href="https://github.com/coil-kt/coil/blob/main/coil-singleton/src/main/java/coil/Coil.kt">Coil</a>
      */
-//    @Provides
-//    @Singleton
-//    fun imageLoader(
-//        okHttpCallFactory: Call.Factory,
-//        @ApplicationContext application: Context,
-//    ): ImageLoader = ImageLoader.Builder(application)
-//        .callFactory(okHttpCallFactory)
-//        .components {
-//            add(SvgDecoder.Factory())
-//        }
-//        // Assume most content images are versioned urls
-//        // but some problematic images are fetching each time
-//        .respectCacheHeaders(false)
-//        .apply {
-//            if (BuildConfig.DEBUG) {
-//                logger(DebugLogger())
-//            }
-//        }
-//        .build()
+    @Provides
+    @Singleton
+    fun imageLoader(
+        okHttpCallFactory: Call.Factory,
+        @ApplicationContext application: Context,
+    ): ImageLoader = ImageLoader.Builder(application)
+        .callFactory(okHttpCallFactory)
+        .components {
+            add(SvgDecoder.Factory())
+        }
+        // Assume most content images are versioned urls
+        // but some problematic images are fetching each time
+        .respectCacheHeaders(false)
+        .apply {
+            if (BuildConfig.DEBUG) {
+                logger(DebugLogger())
+            }
+        }
+        .build()
 }

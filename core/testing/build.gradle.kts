@@ -16,15 +16,15 @@
 plugins {
     alias(libs.plugins.nowinandroid.android.library)
     alias(libs.plugins.nowinandroid.android.library.compose)
-    alias(libs.plugins.nowinandroid.android.hilt)
+    alias(libs.plugins.nowinandroid.hilt)
+    alias(libs.plugins.compose)
 }
 
 android {
-    namespace = "com.google.samples.apps.nowinandroid.core.testing"
+    namespace = "com.linversion.speedy.core.testing"
 }
 
 dependencies {
-    api(libs.accompanist.testharness)
     api(libs.androidx.activity.compose)
     api(libs.androidx.compose.ui.test)
     api(libs.androidx.test.core)
