@@ -30,6 +30,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 
 /**
@@ -181,6 +183,12 @@ val LightAndroidBackgroundTheme = BackgroundTheme(color = DarkGreenGray95)
 val DarkAndroidBackgroundTheme = BackgroundTheme(color = Color.Black)
 
 /**
+ * The design reference width in dp. Screen density is adapted so that
+ * the screen is always treated as this many dp wide.
+ */
+private const val DESIGN_WIDTH_DP = 393f
+
+/**
  * Now in Android theme.
  *
  * @param darkTheme Whether the theme should use a dark color scheme (follows system by default).
@@ -232,8 +240,15 @@ fun NiaTheme(
         !disableDynamicTheming && supportsDynamicTheming() -> TintTheme(colorScheme.primary)
         else -> TintTheme()
     }
+    // Screen density adaptation
+    val displayMetrics = LocalContext.current.resources.displayMetrics
+    val adaptedDensity = Density(
+        density = displayMetrics.widthPixels / DESIGN_WIDTH_DP,
+        fontScale = LocalDensity.current.fontScale,
+    )
     // Composition locals
     CompositionLocalProvider(
+        LocalDensity provides adaptedDensity,
         LocalGradientColors provides gradientColors,
         LocalBackgroundTheme provides backgroundTheme,
         LocalTintTheme provides tintTheme,
