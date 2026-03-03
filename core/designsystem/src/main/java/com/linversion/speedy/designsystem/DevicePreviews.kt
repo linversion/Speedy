@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.linversion.designsystem
+package com.linversion.speedy.designsystem
 
 import androidx.compose.ui.tooling.preview.Preview
 

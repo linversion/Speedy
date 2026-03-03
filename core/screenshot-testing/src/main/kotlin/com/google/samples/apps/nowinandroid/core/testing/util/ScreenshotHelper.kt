@@ -46,7 +46,7 @@ import com.google.android.apps.common.testing.accessibility.framework.Accessibil
 import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult
 import com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException
 import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.BitmapImage
-import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
+import com.linversion.speedy.designsystem.theme.NiaTheme
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 import org.robolectric.RuntimeEnvironment
@@ -62,9 +62,9 @@ val DefaultRoborazziOptions =
     )
 
 enum class DefaultTestDevices(val description: String, val spec: String) {
-    PHONE("phone", "spec:shape=Normal,width=640,height=360,unit=dp,dpi=480"),
-    FOLDABLE("foldable", "spec:shape=Normal,width=673,height=841,unit=dp,dpi=480"),
-    TABLET("tablet", "spec:shape=Normal,width=1280,height=800,unit=dp,dpi=480"),
+    PHONE("phone", "spec:shape=Normal,width=540,height=1200,unit=dp,dpi=420"),
+    FOLDABLE("foldable", "spec:shape=Normal,width=519,height=538,unit=dp,dpi=390"),
+    TABLET("tablet", "spec:shape=Normal,width=1280,height=800,unit=dp,dpi=320"),
 }
 fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.captureMultiDevice(
     screenshotName: String,

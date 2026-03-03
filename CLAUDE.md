@@ -4,7 +4,7 @@
 一个遵循现代 Android 开发最佳实践的开源项目，从 Nowinandroid项目中抽离出来的一个项目基底，方便新项目快速启动。
 
 - **语言**: Kotlin + [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) & [Flow](https://kotlinlang.org/docs/flow.html)
-- **UI 框架**: [Jetpack Compose](https://developer.android.com/jetpack/compose) (Material 3 + Adaptive Layout)
+- **UI 框架**: [Jetpack Compose](https://developer.android.com/jetpack/compose) (Material 3 + Adaptive Layout)，必须写 Composable Preview和截图测试(Screenshot Testing)
 - **依赖注入**: [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - **架构**: 响应式分层架构 (feature UI -> Domain -> Data -> :core:network / :core:datastore)
 - **数据库**: [Room](https://developer.android.com/training/data-storage/room)
